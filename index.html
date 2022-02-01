@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- displays site properly based on user's device -->
+
+    <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+
+    <title>Frontend Mentor | 3-column preview card component</title>
+
+    <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Lexend+Deca:wght@200&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Big+Shoulders+Display&display=swap');
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            display: flex;
+            height: 160vh;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .__container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 160vh;
+        }
+        
+        .__sedansContainer {
+            display: flex;
+            flex-direction: column;
+            height: 25rem;
+            width: 20rem;
+            background-color: hsl(31, 77%, 52%);
+            border-top-left-radius: 0.5rem;
+            border-top-right-radius: 0.5rem;
+        }
+        
+        .__suvsContainer {
+            display: flex;
+            flex-direction: column;
+            height: 25rem;
+            width: 20rem;
+            background-color: hsl(184, 100%, 22%);
+        }
+        
+        .__luxuryContainer {
+            display: flex;
+            flex-direction: column;
+            height: 25rem;
+            width: 20rem;
+            background-color: hsl(179, 100%, 13%);
+            border-bottom-left-radius: 0.5rem;
+            border-bottom-right-radius: 0.5rem;
+        }
+        
+        .__sedans {
+            display: flex;
+            flex-direction: column;
+            padding-top: 2rem;
+            padding-left: 2.5rem;
+            justify-content: space-around;
+            height: 100%;
+        }
+        
+        .__suvs {
+            display: flex;
+            flex-direction: column;
+            padding-top: 2rem;
+            padding-left: 2.5rem;
+            justify-content: space-around;
+            height: 100%;
+        }
+        
+        .__luxury {
+            display: flex;
+            flex-direction: column;
+            padding-top: 2rem;
+            padding-left: 2.5rem;
+            justify-content: space-around;
+            height: 100%;
+        }
+        
+        #__icon_sedans {
+            background: url("images/icon-sedans.svg") no-repeat center center;
+            background-size: contain;
+            width: 3rem;
+            height: 3rem;
+        }
+        
+        #__icon_suvs {
+            background: url("images/icon-suvs.svg") no-repeat center center;
+            background-size: contain;
+            width: 3rem;
+            height: 3rem;
+        }
+        
+        #__icon_luxury {
+            background: url("images/icon-luxury.svg") no-repeat center center;
+            background-size: contain;
+            width: 3rem;
+            height: 3rem;
+        }
+        
+        .__learnmorecontainer {
+            display: flex;
+            width: 100%;
+            align-self: center;
+        }
+        
+        .__sedansInfo {
+            height: 12.5rem;
+        }
+        
+        .__suvsInfo {
+            height: 12.5rem;
+        }
+        
+        .__luxuryInfo {
+            height: 12.5rem;
+        }
+        
+        p {
+            font-family: 'Lexend Deca', sans-serif;
+            font-size: 0.9rem;
+            color: hsl(0, 0%, 100%);
+            line-height: 1.5rem;
+            font-weight: 100;
+            width: 13rem;
+        }
+        
+        h1 {
+            font-family: 'Big Shoulders Display', cursive;
+            margin-bottom: 1rem;
+            font-size: 2rem;
+            color: white;
+            font-weight: 400;
+        }
+        
+        a {
+            text-decoration: none;
+            font-family: 'Lexend Deca', sans-serif;
+            font-size: 0.8rem;
+            font-weight: 1000;
+            margin-top: 1rem;
+            border: solid 1px white;
+        }
+        
+        #__orange {
+            color: hsl(31, 77%, 52%);
+            display: flex;
+            margin-bottom: 2rem;
+            background-color: white;
+            width: 8.5rem;
+            height: 2.8rem;
+            border-radius: 3rem;
+            justify-content: center;
+            align-items: center;
+            transition: 0.5s ease-out;
+        }
+        
+        #__cyan {
+            color: hsl(184, 100%, 22%);
+            display: flex;
+            margin-bottom: 2rem;
+            background-color: white;
+            width: 8.5rem;
+            height: 2.8rem;
+            border-radius: 3rem;
+            justify-content: center;
+            align-items: center;
+            transition: 0.3s ease-in;
+        }
+        
+        #__dark_green {
+            color: hsl(179, 100%, 13%);
+            display: flex;
+            margin-bottom: 2rem;
+            background-color: white;
+            width: 8.5rem;
+            height: 2.8rem;
+            border-radius: 3rem;
+            justify-content: center;
+            align-items: center;
+            transition: 0.3s ease-in;
+        }
+        
+        #__orange:hover {
+            background-color: hsl(31, 77%, 52%);
+            color: white;
+            border: solid -1px white;
+            transition: 0.3s ease-in;
+        }
+        
+        #__cyan:hover {
+            background-color: hsl(184, 100%, 22%);
+            color: white;
+            border: solid 1px white;
+            transition: 0.3s ease-in;
+        }
+        
+        #__dark_green:hover {
+            background-color: hsl(179, 100%, 13%);
+            color: white;
+            border: solid 1px white;
+            transition: 0.3s ease-in;
+        }
+        
+        @media screen and (min-width: 1440px) {
+            body {
+                display: flex;
+                height: 100vh;
+                align-items: center;
+                justify-content: center;
+            }
+            .__container {
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                justify-content: center;
+                height: 100vh;
+            }
+            .__sedansContainer {
+                display: flex;
+                flex-direction: column;
+                height: 25rem;
+                width: 20rem;
+                background-color: hsl(31, 77%, 52%);
+                border-top-left-radius: 0.5rem;
+                border-top-right-radius: 0;
+                border-bottom-left-radius: 0.5rem;
+            }
+            .__luxuryContainer {
+                display: flex;
+                flex-direction: column;
+                height: 25rem;
+                width: 20rem;
+                background-color: hsl(179, 100%, 13%);
+                border-bottom-left-radius: 0;
+                border-top-right-radius: 0.5rem;
+                border-bottom-right-radius: 0.5rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <section>
+        <div class="__container">
+            <div class="__sedansContainer">
+
+                <div class="__sedans">
+                    <div id="__icon_sedans">
+
+                    </div>
+                    <div class="__sedansInfo">
+                        <h1>SEDANS</h1>
+                        <p>Choose a sedan for its affordability and excellent fuel economy. Ideal for cruising in the city or on your next road trip</p>
+                    </div>
+                    <div class="__learnmorecontainer">
+                        <div id="sedans" class="__learnmore">
+                            <a id="__orange" href="#">Learn More</a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="__suvsContainer">
+
+                <div class="__suvs">
+                    <div id="__icon_suvs">
+
+                    </div>
+                    <div class="__suvsInfo">
+                        <h1>SUVS</h1>
+                        <p>Take an SUV for its spacious interior, power, and versatility. Perfect for your next family vacation and off-road adventures</p>
+                    </div>
+                    <div class="__learnmorecontainer">
+                        <div id="suvs" class="__learnmore">
+                            <a id="__cyan" href="#">Learn More</a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="__luxuryContainer">
+
+                <div class="__luxury">
+                    <div id="__icon_luxury">
+
+                    </div>
+                    <div class="__luxuryInfo">
+                        <h1>LUXURY</h1>
+                        <p>Cruise in the best car brands without the bloated prices. Enjoy the enchanced comfort of a luxury rental and arrive in style</p>
+                    </div>
+                    <div class="__learnmorecontainer">
+                        <div id="luxury" class="__learnmore">
+                            <a id="__dark_green" href="#">Learn More</a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+</body>
+
+</html>
